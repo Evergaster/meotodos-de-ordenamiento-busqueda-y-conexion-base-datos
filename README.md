@@ -290,16 +290,17 @@ public class QuickSort {
 <summary>Python</summary>
 
 ```python
+from firebase_admin import credentials, db
 import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import firestore
 
-# Inicializar Firebase
-cred = credentials.Certificate("ruta/a/tu/serviceAccountKey.json")
-firebase_admin.initialize_app(cred)
+cred = credentials.Certificate("code/conexionFirebase/credenciales.json")
+firebase_admin.initialize_app(cred, {
+    'databaseURL': 'https://proyecto-iot-2021-default-rtdb.firebaseio.com/'
+})
 
-# Obtener instancia de Firestore
-db = firestore.client()
+
+ref = db.reference('/')
+print(ref.get())
 ```
 </details>
 
